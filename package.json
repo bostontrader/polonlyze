@@ -1,0 +1,37 @@
+{
+  "author": {
+    "name": "Thomas Radloff",
+    "email": "bostontrader@gmail.com",
+    "url": "https://github.com/bostontrader"
+  },
+  "bugs": {
+    "url": "https://github.com/bostontrader/polonlyze/issues"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "ava": "^0.22.0",
+    "nyc": "^11.2.1"
+  },
+  "description": "Read info about a Poloniex account from the API and recast into a sensible and internally consistent format.",
+  "homepage": "https://github.com/bostontrader/polonlyze#readme",
+  "keywords": [
+    "bookkeeping",
+    "bitcoin",
+    "clamcoin",
+    "cryptocoin",
+    "de-dollarization",
+    "ethereum",
+    "litecoin"
+  ],
+  "license": "MIT",
+  "name": "polonlyze",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bostontrader/polonlyze.git"
+  },
+  "scripts": {
+    "test": "nyc ava unittest.js",
+    "start": "node startServer.js"
+  },
+  "version": "0.1.0"
+}
