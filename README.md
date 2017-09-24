@@ -12,6 +12,8 @@ In order to solve this problem, this software will query the Polo API, cast the 
 
 # Getting Started
 
+Node 8.4 is a prerequisite.
+
 ```
 git clone http://github.com/bostontrader/polonlyze
 cd polonlyze
@@ -19,7 +21,18 @@ npm install
 npm test
 ```
 
+# Execution examples
+
+```
+polonlyze --help
+polonlyze --apiKey nnnnn --secret nnnnnn
+```
+
+
+
 # Dependencies
+
+* commander - Command line interface
 
 # devDependencies
 

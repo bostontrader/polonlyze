@@ -7,7 +7,10 @@
   "bugs": {
     "url": "https://github.com/bostontrader/polonlyze/issues"
   },
-  "dependencies": {},
+  "dependencies": {
+    "commander": "^2.11.0",
+    "poloniex.js": "git://github.com/bostontrader/poloniex.js.git"
+  },
   "devDependencies": {
     "ava": "^0.22.0",
     "nyc": "^11.2.1"
@@ -33,5 +36,5 @@
     "test": "nyc ava unittest.js",
     "start": "node startServer.js"
   },
-  "version": "0.1.0"
+  "version": "0.1.1"
 }
