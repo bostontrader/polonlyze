@@ -26,13 +26,17 @@ program
 
   .parse(process.argv)
 
-const result = polonlyzeCore({
-  exchange:program.exchange || exchangeDefault,
-  keyFile:program.keyFile   || keyFileDefault,
-  lending:program.lending   || lendingDefault,
-  margin:program.margin     || marginDefault,
-  nonceOffset:program.nonceOffset     || nonceOffsetDefault,
-  startDatetime:program.startDatetime || startDatetimeDefault,
-  stopDatetime:program.stopDatetime   || stopDatetimeDefault
-})
-console.log('')
+const main = async () => {
+  const result = await polonlyzeCore({
+    exchange:program.exchange || exchangeDefault,
+    keyFile:program.keyFile   || keyFileDefault,
+    lending:program.lending   || lendingDefault,
+    margin:program.margin     || marginDefault,
+    nonceOffset:program.nonceOffset     || nonceOffsetDefault,
+    startDatetime:program.startDatetime || startDatetimeDefault,
+    stopDatetime:program.stopDatetime   || stopDatetimeDefault
+  })
+  console.log(result)
+}
+
+main()
