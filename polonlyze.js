@@ -1,24 +1,38 @@
 #!/usr/bin/env node
 
-const program = require('commander')
-const poloAPI = require('poloniex.js')
+const program       = require('commander')
+const polonlyzeCore = require('./polonlyzeCore')
+
+const exchangeDefault      = false
+const keyFileDefault       = 'keys.js'
+const lendingDefault       = false
+const marginDefault        = false
+const nonceOffsetDefault   = 0
+const startDatetimeDefault = 0
+const stopDatetimeDefault  = Date.now()
 
 program
   .version('0.1.1')
-  .option('-e, --exchange', 'Exchange')
-  .option('-l, --lending',  'Lending')
-  .option('-m, --margin',   'Margin')
+  .option('-k, --keyFile <value>', 'A file that contains the API key info.  Default='+keyFileDefault)
 
-  .option('-k, --apiKey <value>',      'API Key')
-  .option('-s, --secret <value>',      'Secret')
-  .option('-o, --nonceOffset <value>', 'Nonce Offset')
+
+  .option('-e, --exchange', 'Exchange. Default='+exchangeDefault)
+  .option('-l, --lending',  'Lending.  Default='+lendingDefault)
+  .option('-m, --margin',   'Margin.   Default='+marginDefault)
+
+  .option('-o, --nonceOffset <value>', 'Nonce Offset. Default='+nonceOffsetDefault)
+  .option('-t, --startDatetime <value>', 'Starting Datetime. Default=from the beginning of time.')
+  .option('-u, --stopDatetime <value>',  'Ending Datetime. Default=Right now.')
 
   .parse(process.argv)
 
-console.log('Polonlyze ')
-
-const poloPrivate = new poloAPI(program.apiKey, program.secret, program.nonceOffset)
-
-if (program.exchange) console.log('  - exchange')
-if (program.lending) console.log('  - lending')
-if (program.margin) console.log('  - margin')
+const result = polonlyzeCore({
+  exchange:program.exchange || exchangeDefault,
+  keyFile:program.keyFile   || keyFileDefault,
+  lending:program.lending   || lendingDefault,
+  margin:program.margin     || marginDefault,
+  nonceOffset:program.nonceOffset     || nonceOffsetDefault,
+  startDatetime:program.startDatetime || startDatetimeDefault,
+  stopDatetime:program.stopDatetime   || stopDatetimeDefault
+})
+console.log('')
