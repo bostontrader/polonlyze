@@ -1,3 +1,6 @@
+/*
+This function will take the result of returnDepositsWithdrawals and return an array of transactions.
+ */
 const polonlyze = async (data) => {
 
   const txs = []
