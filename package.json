@@ -33,7 +33,7 @@
     "url": "https://github.com/bostontrader/polonlyze.git"
   },
   "scripts": {
-    "test": "nyc ava unittest.js",
+    "test": "nyc ava '**/*.test.js'",
     "start": "node startServer.js"
   },
   "version": "0.1.1"
