@@ -1,40 +1,34 @@
 #!/usr/bin/env node
 
 const program       = require('commander')
-const polonlyzeCore = require('./polonlyzeCore')
 
-const exchangeDefault      = false
-const keyFileDefault       = 'keys.js'
-const lendingDefault       = false
-const marginDefault        = false
-const nonceOffsetDefault   = 0
-const startDatetimeDefault = 0
-const stopDatetimeDefault  = Date.now()
+const appConstants  = require('./appConstants')
+const polonlyzeCore = require('./polonlyzeCore')
 
 program
   .version('0.1.1')
-  .option('-k, --keyFile <value>', 'A file that contains the API key info.  Default='+keyFileDefault)
+  .option('-k, --keyFile <value>', 'A file that contains the API key info.  Default='+appConstants.KEY_FILE_DEFAULT)
 
 
-  .option('-e, --exchange', 'Exchange. Default='+exchangeDefault)
-  .option('-l, --lending',  'Lending.  Default='+lendingDefault)
-  .option('-m, --margin',   'Margin.   Default='+marginDefault)
+  .option('-e, --exchange', 'Exchange. Default='+appConstants.EXCHANGE_DEFAULT)
+  .option('-l, --lending',  'Lending.  Default='+appConstants.LENDING_DEFULT)
+  .option('-m, --margin',   'Margin.   Default='+appConstants.MARGIN_DEFAULT)
 
-  .option('-o, --nonceOffset <value>', 'Nonce Offset. Default='+nonceOffsetDefault)
-  .option('-t, --startDatetime <value>', 'Starting Datetime. Default=from the beginning of time.')
-  .option('-u, --stopDatetime <value>',  'Ending Datetime. Default=Right now.')
+  .option('-o, --nonceOffset <value>', 'Nonce Offset. Default='+appConstants.NONCE_OFFSET_DEFAULT)
+  .option('-t, --startDatetime <value>', 'Starting Datetime. Default='+appConstants.START_DATETIME_DEFULT)
+  .option('-u, --stopDatetime <value>',  'Ending Datetime. Default='+appConstants.STOP_DATETIME_DEFAULT)
 
   .parse(process.argv)
 
 const main = async () => {
   const result = await polonlyzeCore({
-    exchange:program.exchange || exchangeDefault,
-    keyFile:program.keyFile   || keyFileDefault,
-    lending:program.lending   || lendingDefault,
-    margin:program.margin     || marginDefault,
-    nonceOffset:program.nonceOffset     || nonceOffsetDefault,
-    startDatetime:program.startDatetime || startDatetimeDefault,
-    stopDatetime:program.stopDatetime   || stopDatetimeDefault
+    exchange:program.exchange || appConstants.EXCHANGE_DEFAULT,
+    keyFile:program.keyFile   || appConstants.KEY_FILE_DEFAULT,
+    lending:program.lending   || appConstants.LENDING_DEFULT,
+    margin:program.margin     || appConstants.MARGIN_DEFAULT,
+    nonceOffset:program.nonceOffset     || appConstants.NONCE_OFFSET_DEFAULT,
+    startDatetime:program.startDatetime || appConstants.START_DATETIME_DEFULT,
+    stopDatetime:program.stopDatetime   || appConstants.STOP_DATETIME_DEFAULT
   })
   console.log(result)
 }
