@@ -3,10 +3,11 @@ node_js:
   - "8.4"
 
 before_install:
+  - cd ..
   - git clone http://github.com/bostontrader/polo-catbox
   - cd polo-catbox
   - npm install
   - npm test
   - npm start &
-  - cd ..
+  - cd ../polonlyze
   - pwd
