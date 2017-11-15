@@ -7,4 +7,6 @@ install:
   - cd polo-catbox
   - npm install
   - npm test
-  - npm start
+  - npm start &
+  - pwd
+
