@@ -8,4 +8,5 @@ before_install:
   - npm install
   - npm test
   - npm start &
+  - cd ..
   - pwd
